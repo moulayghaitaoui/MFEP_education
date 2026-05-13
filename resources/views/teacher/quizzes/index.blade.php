@@ -11,8 +11,8 @@
                 <p class="text-slate-500 font-medium text-lg">صمم اختبارات تفاعلية، حدد مدتها، وتابع نتائج تصحيحها آلياً.</p>
             </div>
             
-            <button @click="addQuiz = true" class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-indigo-600/20 hover:bg-indigo-700 transition-all flex items-center gap-3">
-                <i data-lucide="sparkles" class="w-5 h-5"></i>
+            <button @click="addQuiz = true" class="bg-gov-green text-white px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-gov-green/20 hover:bg-gov-green-dark transition-all flex items-center gap-3">
+                <i data-lucide="sparkles" class="w-5 h-5 text-gov-gold"></i>
                 اختبار جديد
             </button>
         </div>
@@ -26,13 +26,13 @@
                             ['title' => 'اختبار منتصف السداسي (MVC)', 'group' => 'فوج A1', 'time' => '45 دقيقة', 'responses' => 42],
                             ['title' => 'تقييم مهارات الـ CSS', 'group' => 'فوج B3', 'time' => '30 دقيقة', 'responses' => 28],
                         ] as $quiz)
-                            <div class="p-8 bg-slate-50 rounded-[32px] border border-transparent hover:border-indigo-100 hover:bg-white transition-all group flex flex-col md:flex-row md:items-center justify-between gap-8">
+                            <div class="p-8 bg-slate-50 rounded-[32px] border border-transparent hover:border-gov-green/10 hover:bg-white transition-all group flex flex-col md:flex-row md:items-center justify-between gap-8">
                                 <div class="flex items-center gap-6">
-                                    <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-indigo-600 shadow-sm border border-slate-100">
+                                    <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-gov-green shadow-sm border border-slate-100">
                                         <i data-lucide="clipboard-check" class="w-7 h-7"></i>
                                     </div>
                                     <div>
-                                        <h4 class="text-lg font-black text-slate-900 group-hover:text-indigo-600 transition-colors">{{ $quiz['title'] }}</h4>
+                                        <h4 class="text-lg font-black text-slate-900 group-hover:text-gov-green transition-colors">{{ $quiz['title'] }}</h4>
                                         <div class="flex items-center gap-4 text-[10px] font-bold text-slate-400 mt-1 uppercase tracking-widest">
                                             <span>{{ $quiz['group'] }}</span>
                                             <span>•</span>
@@ -47,7 +47,7 @@
                                         <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">استجابة</p>
                                     </div>
                                     <div class="flex gap-2">
-                                        <button class="p-3 bg-white text-slate-400 hover:text-indigo-600 rounded-xl transition-all shadow-sm"><i data-lucide="eye" class="w-5 h-5"></i></button>
+                                        <a href="{{ route('teacher.quizzes.preview') }}" class="p-3 bg-white text-slate-400 hover:text-gov-green rounded-xl transition-all shadow-sm"><i data-lucide="eye" class="w-5 h-5"></i></a>
                                         <button class="p-3 bg-white text-slate-400 hover:text-rose-600 rounded-xl transition-all shadow-sm"><i data-lucide="stop-circle" class="w-5 h-5"></i></button>
                                     </div>
                                 </div>
@@ -90,7 +90,7 @@
                 <div class="flex items-center justify-between mb-10 px-4">
                     @foreach(['المعلومات', 'الأسئلة', 'النشر'] as $i => $s)
                         <div class="flex items-center gap-3">
-                            <div :class="step >= {{ $i + 1 }} ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-400'" 
+                            <div :class="step >= {{ $i + 1 }} ? 'bg-gov-green text-white' : 'bg-slate-100 text-slate-400'" 
                                  class="w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-black">
                                 {{ $i + 1 }}
                             </div>
@@ -106,7 +106,7 @@
                     <div class="space-y-6">
                         <div class="space-y-2">
                             <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest">عنوان الاختبار</label>
-                            <input type="text" placeholder="مثلاً: اختبار الوحدة الأولى" class="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 font-bold text-slate-800 focus:ring-4 focus:ring-indigo-600/10 outline-none">
+                            <input type="text" placeholder="مثلاً: اختبار الوحدة الأولى" class="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 font-bold text-slate-800 focus:ring-4 focus:ring-gov-green/10 outline-none">
                         </div>
                         <div class="grid grid-cols-2 gap-6">
                              <div class="space-y-2">
@@ -122,14 +122,14 @@
                 </div>
 
                 <div x-show="step === 2" x-transition class="space-y-6">
-                    <div class="p-8 bg-slate-50 rounded-3xl border border-indigo-100 relative">
+                    <div class="p-8 bg-slate-50 rounded-3xl border border-gov-green/10 relative">
                          <button class="absolute top-4 left-4 text-rose-500 hover:scale-110 transition-transform"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
                          <input type="text" value="ما هي أهمية الـ Model في بنية MVC؟" class="w-full bg-transparent border-none p-0 text-lg font-black text-slate-800 focus:ring-0 outline-none mb-6">
                          <div class="space-y-3">
                             @foreach(['إدارة قواعد البيانات', 'عرض الواجهة', 'معالجة التوجيه'] as $opt)
                                 <div class="flex items-center gap-4 bg-white p-4 rounded-xl border border-slate-100">
-                                     <div class="w-4 h-4 rounded-full border-2 border-indigo-600 flex items-center justify-center">
-                                        <div class="w-1.5 h-1.5 bg-indigo-600 rounded-full"></div>
+                                     <div class="w-4 h-4 rounded-full border-2 border-gov-green flex items-center justify-center">
+                                        <div class="w-1.5 h-1.5 bg-gov-green rounded-full"></div>
                                      </div>
                                      <span class="text-xs font-bold text-slate-600">{{ $opt }}</span>
                                 </div>
@@ -143,8 +143,8 @@
                 </div>
 
                 <div x-show="step === 3" x-transition class="text-center py-10">
-                    <div class="w-20 h-20 bg-indigo-50 text-indigo-600 rounded-3xl mx-auto flex items-center justify-center mb-6">
-                        <i data-lucide="send" class="w-10 h-10"></i>
+                    <div class="w-20 h-20 bg-gov-green/10 text-gov-green rounded-3xl mx-auto flex items-center justify-center mb-6">
+                        <i data-lucide="send" class="w-10 h-10 text-gov-gold"></i>
                     </div>
                     <h4 class="text-xl font-black text-slate-900 mb-2">الاختبار جاهز للنشر!</h4>
                     <p class="text-xs font-bold text-slate-400 max-w-xs mx-auto mb-10">سيتم إخطار جميع المتربصين في الفوج المختار بموعد الاختبار.</p>
@@ -157,7 +157,7 @@
 
                 <div class="flex gap-4">
                     <button x-show="step > 1" @click="step--" class="flex-1 py-4 bg-slate-100 text-slate-500 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-200 transition-all">السابق</button>
-                    <button @click="step === 3 ? (addQuiz = false, step = 1) : step++" class="flex-[2] py-4 bg-indigo-600 text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-indigo-700 transition-all" x-text="step === 3 ? 'نشر الاختبار' : 'التالي'"></button>
+                    <button @click="step === 3 ? (addQuiz = false, step = 1) : step++" class="flex-[2] py-4 bg-gov-green text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-gov-green-dark transition-all" x-text="step === 3 ? 'نشر الاختبار' : 'التالي'"></button>
                 </div>
             </div>
         </x-teacher-modal>

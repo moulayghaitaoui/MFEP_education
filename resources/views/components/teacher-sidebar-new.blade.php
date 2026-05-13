@@ -24,8 +24,16 @@
         <x-teacher-sidebar-item-new icon="folder-open" label="الملفات والموارد" href="{{ route('teacher.resources') }}" :active="request()->routeIs('teacher.resources')" />
     </nav>
 
+    <!-- Logout -->
+    <div class="px-6 py-4">
+        <a href="{{ route('login') }}" class="flex items-center gap-4 px-6 py-4 rounded-[24px] text-rose-300 hover:bg-rose-500 hover:text-white transition-all group overflow-hidden">
+            <i data-lucide="log-out" class="w-5 h-5 flex-shrink-0"></i>
+            <span x-show="sidebarOpen" class="text-[11px] font-black uppercase tracking-widest whitespace-nowrap">تسجيل الخروج</span>
+        </a>
+    </div>
+
     <!-- Support -->
-    <div class="p-6 mt-auto border-t border-white/5" x-show="sidebarOpen">
+    <div class="p-6 border-t border-white/5 mt-auto" x-show="sidebarOpen">
         <div class="bg-white/5 p-5 rounded-[30px] border border-white/5">
              <p class="text-[10px] font-black text-gov-gold uppercase mb-2">مركز المساعدة</p>
              <p class="text-xs text-white/60 mb-4 leading-relaxed font-bold">هل تواجه مشكلة في رفع المحتوى؟</p>

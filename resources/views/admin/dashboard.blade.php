@@ -37,14 +37,18 @@
         <!-- Welcome Section -->
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 animate-fade-in">
             <div>
-                <h1 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter mb-2 leading-tight">مرحباً، <span class="text-cyan-600">سيادة الوزير</span></h1>
+                <h1 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter mb-2 leading-tight">مرحباً، <span class="text-gov-green">سيادة الوزير</span></h1>
                 <p class="text-slate-500 font-medium text-lg">نظرة شاملة على مؤشرات الأداء الوطني لقطاع التكوين المهني.</p>
             </div>
             <div class="flex gap-4">
-                <div class="px-8 py-4 bg-white border border-slate-200 rounded-3xl shadow-sm text-right">
-                    <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">آخر تحديث للبيانات</p>
-                    <p class="text-sm font-black text-slate-900">اليوم، 14:30 م</p>
-                </div>
+                <button class="bg-gov-green text-white px-8 py-4 rounded-3xl font-black text-[10px] uppercase tracking-widest shadow-xl shadow-gov-green/20 hover:bg-gov-green-dark transition-all flex items-center gap-3">
+                    <i data-lucide="plus" class="w-5 h-5 text-gov-gold"></i>
+                    إضافة معهد جديد
+                </button>
+                <button class="bg-white text-slate-900 border border-slate-200 px-8 py-4 rounded-3xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-50 transition-all flex items-center gap-3">
+                    <i data-lucide="map" class="w-5 h-5 text-gov-green"></i>
+                    إضافة مديرية
+                </button>
             </div>
         </div>
 

@@ -27,17 +27,17 @@
         <!-- Management -->
         <div class="mb-4 pt-4 border-t border-white/5">
             <p x-show="sidebarOpen" class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold px-4 mb-2">إدارة الموارد</p>
-            <x-sidebar-item icon="map" label="إدارة المديريات" />
-            <x-sidebar-item icon="landmark" label="إدارة المعاهد" />
-            <x-sidebar-item icon="users" label="إدارة المستخدمين" />
-            <x-sidebar-item icon="book-marked" label="إدارة التخصصات" />
+            <x-sidebar-item icon="map" label="إدارة المديريات" active="{{ request()->routeIs('admin.directions') }}" href="{{ route('admin.directions') }}" />
+            <x-sidebar-item icon="landmark" label="إدارة المعاهد" active="{{ request()->routeIs('admin.institutes') }}" href="{{ route('admin.institutes') }}" />
+            <x-sidebar-item icon="users" label="إدارة المستخدمين" active="{{ request()->routeIs('admin.users') }}" href="{{ route('admin.users') }}" />
+            <x-sidebar-item icon="book-marked" label="إدارة التخصصات" active="{{ request()->routeIs('admin.specializations') }}" href="{{ route('admin.specializations') }}" />
         </div>
         
         <!-- Reports -->
         <div class="mb-4 pt-4 border-t border-white/5">
             <p x-show="sidebarOpen" class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold px-4 mb-2">البيانات</p>
             <x-sidebar-item icon="bar-chart-big" label="التقارير الوطنية" active="{{ request()->routeIs('admin.reports') }}" href="{{ route('admin.reports') }}" />
-            <x-sidebar-item icon="pie-chart" label="الإحصائيات العامة" />
+            <x-sidebar-item icon="pie-chart" label="الإحصائيات العامة" active="{{ request()->routeIs('admin.analytics') }}" href="{{ route('admin.analytics') }}" />
         </div>
         
         <!-- Configuration -->
@@ -45,13 +45,17 @@
             <p x-show="sidebarOpen" class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold px-4 mb-2">النظام</p>
             <x-sidebar-item icon="settings-2" label="إعدادات المنصة" active="{{ request()->routeIs('admin.settings') }}" href="{{ route('admin.settings') }}" />
             <x-sidebar-item icon="key" label="الأمان والتراخيص" />
-            <x-sidebar-item icon="terminal" label="سجلات النظام" />
+            <x-sidebar-item icon="terminal" label="سجلات النظام" active="{{ request()->routeIs('admin.activity') }}" href="{{ route('admin.activity') }}" />
         </div>
     </nav>
 
     <!-- App Version / Status -->
-    <div class="p-4 bg-slate-900/50 border-t border-white/10" x-show="sidebarOpen">
-        <div class="flex items-center justify-between text-[10px] font-bold text-slate-500 uppercase tracking-tighter">
+    <div class="p-4 bg-slate-900/50 border-t border-white/10 mt-auto">
+        <a href="{{ route('login') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-rose-300 hover:bg-rose-500 hover:text-white transition-all group mb-4">
+            <i data-lucide="log-out" class="w-5 h-5"></i>
+            <span x-show="sidebarOpen" class="text-xs font-black uppercase tracking-widest">تسجيل الخروج</span>
+        </a>
+        <div x-show="sidebarOpen" class="flex items-center justify-between text-[10px] font-bold text-slate-500 uppercase tracking-tighter">
             <span>Server: DZ-AL-01</span>
             <span class="text-emerald-500">Online</span>
         </div>

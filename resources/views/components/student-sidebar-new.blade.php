@@ -25,8 +25,16 @@
         <x-student-sidebar-item icon="award" label="الشهادات" href="{{ route('student.certificates') }}" :active="request()->routeIs('student.certificates')" />
     </nav>
 
+    <!-- Logout -->
+    <div class="px-4 py-2">
+        <a href="{{ route('login') }}" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-rose-300 hover:bg-rose-500 hover:text-white transition-all group overflow-hidden">
+            <i data-lucide="log-out" class="w-5 h-5 flex-shrink-0"></i>
+            <span x-show="sidebarOpen" class="text-[11px] font-black uppercase tracking-widest">تسجيل الخروج</span>
+        </a>
+    </div>
+
     <!-- Account -->
-    <div class="p-6 mt-auto border-t border-white/5" x-show="sidebarOpen">
+    <div class="p-6 border-t border-white/5 mt-auto" x-show="sidebarOpen">
         <div class="bg-white/5 p-4 rounded-3xl flex items-center gap-3">
             <div class="w-10 h-10 rounded-full bg-gov-gold flex items-center justify-center font-black text-xs text-white">MB</div>
             <div class="flex flex-col">

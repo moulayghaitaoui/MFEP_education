@@ -24,6 +24,26 @@ Route::get('/admin/activity', function () {
     return view('admin.activity');
 })->name('admin.activity');
 
+Route::get('/admin/directions', function () {
+    return view('admin.directions');
+})->name('admin.directions');
+
+Route::get('/admin/users', function () {
+    return view('admin.users');
+})->name('admin.users');
+
+Route::get('/admin/specializations', function () {
+    return view('admin.specializations');
+})->name('admin.specializations');
+
+Route::get('/admin/settings', function () {
+    return view('admin.settings');
+})->name('admin.settings');
+
+Route::get('/admin/reports', function () {
+    return view('admin.reports');
+})->name('admin.reports');
+
 Route::get('/direction', function () {
     return view('direction.dashboard');
 })->name('direction.dashboard');

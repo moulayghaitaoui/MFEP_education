@@ -10,6 +10,17 @@
             </button>
             <h2 class="text-xl font-black text-slate-900 tracking-tight">إدارة المعاهد والمديريات</h2>
         </div>
+
+        <div class="flex items-center gap-4">
+            <button class="bg-gov-green text-white px-6 py-3 rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-lg shadow-gov-green/10 hover:bg-gov-green-dark transition-all flex items-center gap-3">
+                <i data-lucide="plus" class="w-4 h-4 text-gov-gold"></i>
+                إضافة معهد
+            </button>
+            <button class="bg-slate-900 text-white px-6 py-3 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-800 transition-all flex items-center gap-3">
+                <i data-lucide="map" class="w-4 h-4 text-gov-green"></i>
+                إضافة مديرية
+            </button>
+        </div>
     </header>
 @endsection
 

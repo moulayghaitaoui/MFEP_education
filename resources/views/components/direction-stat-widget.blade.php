@@ -4,9 +4,9 @@
     <div class="flex items-center justify-between mb-8">
         <div @class([
             'w-14 h-14 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 shadow-lg',
-            'bg-blue-600 text-white shadow-blue-900/10' => $color == 'blue',
+            'bg-gov-green text-white shadow-gov-green/10' => $color == 'gov-green',
+            'bg-gov-gold text-white shadow-gov-gold/10' => $color == 'gov-gold',
             'bg-emerald-600 text-white shadow-emerald-900/10' => $color == 'emerald',
-            'bg-amber-500 text-white shadow-amber-900/10' => $color == 'amber',
         ])>
             <i data-lucide="{{ $icon }}" class="w-7 h-7"></i>
         </div>

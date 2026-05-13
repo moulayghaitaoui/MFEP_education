@@ -1,19 +1,19 @@
 @props(['role' => 'admin'])
 
-<aside class="sidebar-gradient text-white flex-shrink-0 flex flex-col h-full transition-all duration-300 relative shadow-2xl z-50">
+<aside :class="sidebarOpen ? 'w-80' : 'w-20'" class="gov-gradient text-white flex-shrink-0 flex flex-col h-full transition-all duration-300 relative shadow-2xl z-50 overflow-hidden">
     <!-- Collapse Toggle Button -->
-    <button @click="sidebarOpen = !sidebarOpen" class="absolute -left-3 top-24 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-500 transition-colors z-50">
-        <i :data-lucide="sidebarOpen ? 'chevron-right' : 'chevron-left'" class="w-4 h-4"></i>
+    <button @click="sidebarOpen = !sidebarOpen" class="absolute -left-3 top-24 w-6 h-6 bg-gov-gold rounded-full flex items-center justify-center shadow-lg hover:bg-gov-gold-light transition-colors z-50">
+        <i :data-lucide="sidebarOpen ? 'chevron-right' : 'chevron-left'" class="w-4 h-4 text-white"></i>
     </button>
 
     <!-- Brand / Logo -->
     <div class="p-6 border-b border-white/10 flex items-center gap-3 overflow-hidden">
-        <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-lg flex-shrink-0">
-            <i data-lucide="building" class="text-blue-900 w-6 h-6"></i>
+        <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-lg flex-shrink-0 overflow-hidden">
+            <img src="/assets/logo.png" alt="Logo" class="w-8 h-8 object-contain" onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Seal_of_Algeria.svg/1024px-Seal_of_Algeria.svg.png';">
         </div>
         <div class="flex flex-col whitespace-nowrap transition-opacity duration-300" :class="sidebarOpen ? 'opacity-100' : 'opacity-0'">
-            <span class="font-bold text-lg leading-tight tracking-tight text-white">المديرية الولائية</span>
-            <span class="text-[10px] text-blue-300/80 font-bold uppercase tracking-widest">تسيير ولائي</span>
+            <span class="font-black text-lg leading-tight tracking-tight text-white">المديرية الولائية</span>
+            <span class="text-[10px] text-gov-gold-light font-black uppercase tracking-widest">تسيير إقليمي</span>
         </div>
     </div>
 
@@ -55,12 +55,16 @@
     </nav>
 
     <!-- User Profile Summary (Bottom) -->
-    <div class="p-4 bg-slate-900/50 border-t border-white/10" x-show="sidebarOpen">
-        <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[10px] font-bold">DZ</div>
+    <div class="p-4 bg-slate-900/50 border-t border-white/10 mt-auto">
+        <a href="{{ route('login') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-rose-300 hover:bg-rose-500 hover:text-white transition-all group mb-4">
+            <i data-lucide="log-out" class="w-5 h-5"></i>
+            <span x-show="sidebarOpen" class="text-xs font-black uppercase tracking-widest">تسجيل الخروج</span>
+        </a>
+        <div x-show="sidebarOpen" class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-gov-green flex items-center justify-center text-[10px] font-bold">DZ</div>
             <div class="flex flex-col">
                 <span class="text-[11px] font-bold">مديرية ولاية سطيف</span>
-                <span class="text-[9px] text-slate-500">متصل الآن</span>
+                <span class="text-[9px] text-slate-500 font-bold">متصل الآن</span>
             </div>
         </div>
     </div>

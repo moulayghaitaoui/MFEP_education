@@ -12,10 +12,12 @@ export default {
         inter: ['Inter', 'sans-serif'],
       },
       colors: {
-        algeria: {
-          blue: '#1e3a8a',
-          green: '#008037',
+        gov: {
+          green: '#006233',
+          'green-dark': '#004d28',
           red: '#d21034',
+          gold: '#b59410',
+          'gold-light': '#d4af37',
         }
       },
       boxShadow: {

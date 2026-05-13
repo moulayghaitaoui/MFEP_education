@@ -3,8 +3,16 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --primary-gov: #006233;
+    --primary-gov-dark: #004d28;
+    --secondary-gov: #d21034;
+    --accent-gold: #b59410;
+    --accent-gold-light: #d4af37;
+  }
+
   body {
-    @apply font-tajawal;
+    @apply font-tajawal bg-slate-50;
   }
 }
 
@@ -17,15 +25,18 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 98, 51, 0.1);
   border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 98, 51, 0.2);
 }
 
-/* RTL Specific adjustments if needed */
-[dir="rtl"] .sidebar-gradient {
-  background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
+.gov-gradient {
+  background: linear-gradient(135deg, var(--primary-gov) 0%, var(--primary-gov-dark) 100%);
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-light) 100%);
 }

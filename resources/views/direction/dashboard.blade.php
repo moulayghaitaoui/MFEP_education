@@ -1,193 +1,110 @@
-@extends('layouts.app')
+@extends('layouts.direction')
 
-@section('title', 'لوحة تحكم المديرية الولائية - سطيف')
+@section('title', 'مديرية التكوين والتعليم المهنيين - ولاية سطيف')
+
+@section('navbar')
+    <header class="h-24 bg-white/80 backdrop-blur-xl border-b border-slate-100 flex items-center justify-between px-12 z-20">
+        <div class="flex items-center gap-8">
+            <button @click="sidebarOpen = !sidebarOpen" class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-400 hover:text-slate-900 transition-all">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+            <div>
+                <h2 class="text-xl font-black text-slate-900 tracking-tight">مديرية ولاية سطيف</h2>
+                <p class="text-[10px] font-black text-gov-green uppercase tracking-widest mt-0.5">بوابة التسيير الإقليمي</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-6">
+            <button class="relative w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-400 hover:text-slate-900 transition-all shadow-sm">
+                <i data-lucide="bell" class="w-6 h-6"></i>
+                <span class="absolute top-3 right-3 w-2 h-2 bg-rose-500 rounded-full border-2 border-white"></span>
+            </button>
+            <div class="w-12 h-12 rounded-2xl bg-gov-green flex items-center justify-center text-white font-black text-xs shadow-xl shadow-gov-green/20">
+                DR
+            </div>
+        </div>
+    </header>
+@endsection
 
 @section('content')
-    <!-- Dashboard Header -->
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
-        <div>
-            <h1 class="text-3xl font-black text-slate-900 tracking-tighter">مرحباً، مديرية ولاية سطيف</h1>
-            <p class="text-slate-500 font-medium mt-1">نظرة عامة على سير التكوين المهني في الولاية اليوم.</p>
-        </div>
-        
-        <div class="flex items-center gap-3">
-            <div class="bg-white px-4 py-2 rounded-xl border border-slate-200 shadow-sm flex items-center gap-3">
-                <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                <span class="text-xs font-bold text-slate-600">تحديث تلقائي: نشط</span>
+    <div class="p-12 space-y-12">
+        <!-- Top Section: Stats & Calendar -->
+        <div class="grid grid-cols-1 xl:grid-cols-4 gap-8">
+            <div class="xl:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <x-direction-stat-widget label="إجمالي المتربصين" value="45,240" icon="users" color="gov-green" progress="12" />
+                <x-direction-stat-widget label="عدد الأساتذة بالولاية" value="1,850" icon="award" color="gov-gold" />
+                <x-direction-stat-widget label="نسبة الحضور العامة" value="94.2%" icon="check-circle-2" color="emerald" />
             </div>
-            <button class="bg-blue-600 text-white px-6 py-3 rounded-2xl font-bold text-sm shadow-xl shadow-blue-500/20 hover:bg-blue-700 transition-all flex items-center gap-2">
-                <i data-lucide="plus" class="w-4 h-4"></i>
-                إضافة إعلان ولائي
-            </button>
-        </div>
-    </div>
-
-    <!-- Quick Actions Grid -->
-    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-10">
-        @foreach([
-            ['label' => 'إضافة فوج', 'icon' => 'users-round', 'color' => 'blue'],
-            ['label' => 'جدول جديد', 'icon' => 'calendar-plus', 'color' => 'purple'],
-            ['label' => 'تسجيل حضور', 'icon' => 'fingerprint', 'color' => 'emerald'],
-            ['label' => 'رفع نتائج', 'icon' => 'file-up', 'color' => 'amber'],
-            ['label' => 'طلب تقرير', 'icon' => 'file-search', 'color' => 'rose'],
-            ['label' => 'مراسلة معهد', 'icon' => 'send', 'color' => 'indigo'],
-        ] as $action)
-            <button class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all group text-center">
-                <div @class([
-                    'w-12 h-12 rounded-xl mx-auto mb-3 flex items-center justify-center transition-transform group-hover:scale-110',
-                    'bg-blue-50 text-blue-600' => $action['color'] == 'blue',
-                    'bg-purple-50 text-purple-600' => $action['color'] == 'purple',
-                    'bg-emerald-50 text-emerald-600' => $action['color'] == 'emerald',
-                    'bg-amber-50 text-amber-600' => $action['color'] == 'amber',
-                    'bg-rose-50 text-rose-600' => $action['color'] == 'rose',
-                    'bg-indigo-50 text-indigo-600' => $action['color'] == 'indigo',
-                ])>
-                    <i data-lucide="{{ $action['icon'] }}" class="w-6 h-6"></i>
-                </div>
-                <span class="text-xs font-bold text-slate-700">{{ $action['label'] }}</span>
-            </button>
-        @endforeach
-    </div>
-
-    <!-- Stats Row -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-        <x-stat-card icon="school" label="المعاهد النشطة" value="42" trend="0" color="blue" />
-        <x-stat-card icon="users" label="إجمالي الأفواج" value="156" trend="12" color="purple" />
-        <x-stat-card icon="user-check" label="حضور اليوم" value="94%" trend="2.4" color="green" />
-        <x-stat-card icon="alert-circle" label="غيابات الأساتذة" value="3" trend="-5" color="orange" />
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <!-- Main Chart Area -->
-        <div class="lg:col-span-2 space-y-8">
-            <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
-                <div class="flex items-center justify-between mb-8">
-                    <div>
-                        <h3 class="text-xl font-black text-slate-900 tracking-tight">إحصائيات الحضور الأسبوعية</h3>
-                        <p class="text-xs font-bold text-slate-400 mt-1 uppercase tracking-widest">مقارنة بين حضور المتربصين والأساتذة</p>
-                    </div>
-                    <select class="bg-slate-50 border-none rounded-xl text-xs font-bold text-slate-500 py-2 pr-8 pl-4">
-                        <option>آخر 7 أيام</option>
-                        <option>آخر 30 يوم</option>
-                    </select>
-                </div>
-                
-                <div class="h-80 w-full bg-slate-50 rounded-2xl border border-dashed border-slate-200 flex flex-col items-center justify-center text-slate-300 gap-4 group">
-                    <div class="flex items-end gap-3 h-48">
-                        @for($i=0; $i<7; $i++)
-                            <div class="w-8 bg-blue-500 rounded-t-lg transition-all duration-500 group-hover:h-{{ rand(20, 48) }}" style="height: {{ rand(40, 90) }}%"></div>
-                            <div class="w-8 bg-blue-200 rounded-t-lg transition-all duration-500 group-hover:h-{{ rand(10, 30) }}" style="height: {{ rand(20, 60) }}%"></div>
-                        @endfor
-                    </div>
-                    <p class="text-xs font-bold uppercase tracking-[0.2em]">Attendance Analytics Engine</p>
-                </div>
-            </div>
-
-            <!-- Institutes List Table -->
-            <div class="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden">
-                <div class="p-8 border-b border-slate-50 flex items-center justify-between">
-                    <h3 class="text-xl font-black text-slate-900 tracking-tight">حالة المعاهد التابعة</h3>
-                    <button class="text-blue-600 font-bold text-xs hover:underline">عرض الكل</button>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-right">
-                        <thead class="bg-slate-50/50 text-[10px] uppercase tracking-[0.2em] font-black text-slate-400">
-                            <tr>
-                                <th class="px-8 py-4">المعهد</th>
-                                <th class="px-8 py-4">الأفواج</th>
-                                <th class="px-8 py-4">الحضور</th>
-                                <th class="px-8 py-4">الحالة</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-50">
-                            @foreach([
-                                ['name' => 'معهد سطيف 01', 'groups' => 12, 'attendance' => '96%', 'status' => 'منتظم'],
-                                ['name' => 'مركز العلمة المختلط', 'groups' => 8, 'attendance' => '88%', 'status' => 'منتظم'],
-                                ['name' => 'معهد عين الكبيرة', 'groups' => 15, 'attendance' => '92%', 'status' => 'منتظم'],
-                                ['name' => 'مركز حمام السخنة', 'groups' => 5, 'attendance' => '75%', 'status' => 'تحذير'],
-                            ] as $inst)
-                                <tr class="hover:bg-slate-50 transition-colors">
-                                    <td class="px-8 py-5 text-sm font-bold text-slate-800">{{ $inst['name'] }}</td>
-                                    <td class="px-8 py-5 text-sm text-slate-500 font-medium">{{ $inst['groups'] }} فوج</td>
-                                    <td class="px-8 py-5 text-sm font-black text-blue-600">{{ $inst['attendance'] }}</td>
-                                    <td class="px-8 py-5">
-                                        <span @class([
-                                            'px-2 py-1 rounded-lg text-[10px] font-bold',
-                                            'bg-emerald-100 text-emerald-700' => $inst['status'] == 'منتظم',
-                                            'bg-amber-100 text-amber-700' => $inst['status'] == 'تحذير',
-                                        ])>
-                                            {{ $inst['status'] }}
-                                        </span>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+            <div class="xl:col-span-1">
+                <x-direction-calendar-widget />
             </div>
         </div>
 
-        <!-- Right Column: Calendar & Notifications -->
-        <div class="space-y-8">
-            <!-- Calendar UI Placeholder -->
-            <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
-                <div class="flex items-center justify-between mb-6">
-                    <h3 class="text-lg font-black text-slate-900">الأجندة الولائية</h3>
-                    <div class="flex gap-1">
-                        <button class="p-1 hover:bg-slate-100 rounded-lg"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
-                        <button class="p-1 hover:bg-slate-100 rounded-lg"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
-                    </div>
-                </div>
-                
-                <div class="grid grid-cols-7 gap-2 text-center text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">
-                    <span>ح</span><span>ن</span><span>ث</span><span>أ</span><span>خ</span><span>ج</span><span>س</span>
-                </div>
-                
-                <div class="grid grid-cols-7 gap-2">
-                    @for($i=1; $i<=31; $i++)
-                        <button @class([
-                            'h-10 w-full rounded-xl flex items-center justify-center text-xs font-bold transition-all',
-                            'bg-blue-600 text-white shadow-lg shadow-blue-500/30' => $i == 13,
-                            'hover:bg-slate-50 text-slate-600' => $i != 13,
-                            'opacity-20' => $i > 30,
-                        ])>
-                            {{ $i > 30 ? $i-30 : $i }}
-                        </button>
-                    @endfor
-                </div>
-                
-                <div class="mt-8 space-y-4">
-                    <div class="p-3 bg-blue-50 rounded-2xl border border-blue-100">
-                        <p class="text-[10px] font-black text-blue-600 uppercase mb-1">09:00 AM</p>
-                        <p class="text-xs font-bold text-slate-800">اجتماع مديري المعاهد</p>
-                    </div>
-                    <div class="p-3 bg-purple-50 rounded-2xl border border-purple-100">
-                        <p class="text-[10px] font-black text-purple-600 uppercase mb-1">02:30 PM</p>
-                        <p class="text-xs font-bold text-slate-800">زيارة تفتيشية لمعهد سطيف 02</p>
-                    </div>
-                </div>
+        <!-- Middle Section: Performance & Activity -->
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-12">
+            <div class="xl:col-span-2">
+                <x-direction-performance-chart title="تطور معدل النجاح عبر معاهد الولاية" />
             </div>
 
-            <!-- Recent Notifications -->
-            <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
-                <h3 class="text-lg font-black text-slate-900 mb-6">إشعارات هامة</h3>
-                <div class="space-y-6">
+            <div class="bg-white rounded-[40px] p-10 border border-slate-100 shadow-sm flex flex-col">
+                <h3 class="text-xl font-black text-slate-900 tracking-tight mb-8">نشاط المعاهد الأخير</h3>
+                <div class="flex-1 space-y-8">
                     @foreach([
-                        ['title' => 'تعديل جدول', 'desc' => 'معهد القبة قام بتعديل جدول التوقيت للفوج "أ"', 'time' => '10 د'],
-                        ['title' => 'غياب جماعي', 'desc' => 'تم تسجيل غياب جماعي في مركز العلمة (فوج الكهرباء)', 'time' => '1 س'],
-                        ['title' => 'تقرير جاهز', 'desc' => 'التقرير الشهري لمركز بوقاعة متاح الآن للمراجعة', 'time' => '3 س'],
-                    ] as $notif)
-                        <div class="flex gap-4 group cursor-pointer">
-                            <div class="w-2 h-10 bg-slate-100 group-hover:bg-blue-600 rounded-full transition-colors"></div>
+                        ['m' => 'معهد سطيف 01', 'a' => 'تم استكمال برنامج الوحدة 4', 't' => 'منذ ساعة', 'c' => 'gov-green'],
+                        ['m' => 'معهد العلمة', 'a' => 'بدء التسجيلات في دورة ماي', 't' => 'منذ 3 ساعات', 'c' => 'gov-gold'],
+                        ['m' => 'مركز عين الكبيرة', 'a' => 'إرسال تقرير الميزانية السنوي', 't' => 'منذ يوم', 'c' => 'emerald'],
+                    ] as $act)
+                        <div class="flex items-start gap-4">
+                            <div class="w-2 h-12 rounded-full @if($act['c'] == 'gov-green') bg-gov-green @elseif($act['c'] == 'gov-gold') bg-gov-gold @else bg-emerald-600 @endif opacity-20 group-hover:opacity-100 transition-opacity"></div>
                             <div>
-                                <p class="text-sm font-bold text-slate-800">{{ $notif['title'] }}</p>
-                                <p class="text-[11px] text-slate-500 mt-0.5">{{ $notif['desc'] }}</p>
-                                <span class="text-[9px] font-black text-slate-400 mt-1 block">{{ $notif['time'] }}</span>
+                                <h4 class="text-xs font-black text-slate-900">{{ $act['m'] }}</h4>
+                                <p class="text-[11px] font-medium text-slate-500 mt-1">{{ $act['a'] }}</p>
+                                <p class="text-[9px] font-black text-slate-400 uppercase mt-2">{{ $act['t'] }}</p>
                             </div>
                         </div>
                     @endforeach
                 </div>
-                <button class="w-full mt-8 py-3 rounded-xl border border-slate-100 text-xs font-bold text-blue-600 hover:bg-blue-50 transition-all">مشاهدة الكل</button>
+                <button class="w-full py-4 mt-8 bg-slate-50 text-[10px] font-black text-slate-400 uppercase tracking-widest hover:bg-gov-green hover:text-white rounded-2xl transition-all">عرض التقرير الكامل</button>
+            </div>
+        </div>
+
+        <!-- Bottom Section: Institutes Overview -->
+        <div class="space-y-8 pb-12">
+            <div class="flex items-center justify-between px-4">
+                <h3 class="text-2xl font-black text-slate-900 tracking-tight">متابعة أداء المعاهد (INSFP)</h3>
+                <div class="flex gap-4">
+                    <button class="px-6 py-2 bg-white border border-slate-100 rounded-xl text-[10px] font-black text-slate-400 uppercase tracking-widest hover:text-gov-green transition-all">تصدير بيانات الولاية</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+                @foreach([
+                    ['name' => 'INSFP سطيف 1', 'std' => '1,200', 'rate' => 92, 'color' => 'gov-green'],
+                    ['name' => 'INSFP سطيف 2', 'std' => '850', 'rate' => 88, 'color' => 'gov-gold'],
+                    ['name' => 'INSFP العلمة', 'std' => '940', 'rate' => 95, 'color' => 'emerald'],
+                    ['name' => 'INSFP بوقاعة', 'std' => '620', 'rate' => 84, 'color' => 'gov-green'],
+                ] as $ins)
+                    <div class="bg-white rounded-[40px] p-8 border border-slate-100 shadow-sm hover:shadow-2xl transition-all group overflow-hidden relative">
+                        <div class="relative z-10">
+                            <h4 class="text-lg font-black text-slate-900 mb-4">{{ $ins['name'] }}</h4>
+                            <div class="flex justify-between text-[10px] font-black uppercase mb-2">
+                                <span class="text-slate-400">نسبة النجاح</span>
+                                <span class="text-gov-green">{{ $ins['rate'] }}%</span>
+                            </div>
+                            <div class="w-full h-1.5 bg-slate-50 rounded-full overflow-hidden mb-6">
+                                <div class="h-full bg-gov-green rounded-full" style="width: {{ $ins['rate'] }}%"></div>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 border-t border-slate-50">
+                                <div class="flex flex-col">
+                                    <span class="text-[9px] font-black text-slate-400 uppercase">المتربصين</span>
+                                    <span class="text-sm font-black text-slate-900">{{ $ins['std'] }}</span>
+                                </div>
+                                <button class="w-8 h-8 rounded-lg bg-slate-50 text-slate-400 flex items-center justify-center hover:bg-gov-green hover:text-white transition-all"><i data-lucide="eye" class="w-4 h-4"></i></button>
+                            </div>
+                        </div>
+                        <i data-lucide="building" class="absolute -bottom-6 -left-6 w-32 h-32 text-slate-50 -rotate-12 group-hover:text-gov-green/5 transition-colors"></i>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

@@ -20,28 +20,28 @@
         <!-- Overview -->
         <div class="mb-4">
             <p x-show="sidebarOpen" class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold px-4 mb-2">الرئيسية</p>
-            <x-sidebar-item icon="layout-dashboard" label="لوحة التحكم" active="{{ request()->routeIs('teacher.dashboard') }}" :collapsed="!sidebarOpen" href="{{ route('teacher.dashboard') }}" />
+            <x-sidebar-item icon="layout-dashboard" label="لوحة التحكم" active="{{ request()->routeIs('teacher.dashboard') }}" href="{{ route('teacher.dashboard') }}" />
         </div>
         
         <!-- Teaching Management -->
         <div class="mb-4 pt-4 border-t border-white/5">
             <p x-show="sidebarOpen" class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold px-4 mb-2">إدارة التعليم</p>
-            <x-sidebar-item icon="calendar-clock" label="إنشاء حصة" active="{{ request()->routeIs('teacher.sessions') }}" :collapsed="!sidebarOpen" href="{{ route('teacher.sessions') }}" />
-            <x-sidebar-item icon="file-up" label="رفع درس" active="{{ request()->routeIs('teacher.lessons') }}" :collapsed="!sidebarOpen" href="{{ route('teacher.lessons') }}" />
-            <x-sidebar-item icon="clipboard-list" label="إنشاء اختبار" active="{{ request()->routeIs('teacher.quizzes') }}" :collapsed="!sidebarOpen" href="{{ route('teacher.quizzes') }}" />
+            <x-sidebar-item icon="calendar-clock" label="إنشاء حصة" active="{{ request()->routeIs('teacher.sessions') }}" href="{{ route('teacher.sessions') }}" />
+            <x-sidebar-item icon="file-up" label="رفع درس" active="{{ request()->routeIs('teacher.lessons') }}" href="{{ route('teacher.lessons') }}" />
+            <x-sidebar-item icon="clipboard-list" label="إنشاء اختبار" active="{{ request()->routeIs('teacher.quizzes') }}" href="{{ route('teacher.quizzes') }}" />
         </div>
         
         <!-- Students & Results -->
         <div class="mb-4 pt-4 border-t border-white/5">
             <p x-show="sidebarOpen" class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold px-4 mb-2">الطلبة والنتائج</p>
-            <x-sidebar-item icon="users" label="قائمة الطلبة" active="{{ request()->routeIs('teacher.students') }}" :collapsed="!sidebarOpen" href="{{ route('teacher.students') }}" />
-            <x-sidebar-item icon="graduation-cap" label="نتائج الاختبارات" active="{{ request()->routeIs('teacher.results') }}" :collapsed="!sidebarOpen" href="{{ route('teacher.results') }}" />
+            <x-sidebar-item icon="users" label="قائمة الطلبة" active="{{ request()->routeIs('teacher.students') }}" href="{{ route('teacher.students') }}" />
+            <x-sidebar-item icon="graduation-cap" label="نتائج الاختبارات" active="{{ request()->routeIs('teacher.results') }}" href="{{ route('teacher.results') }}" />
         </div>
 
         <!-- Social & Support -->
         <div class="mb-4 pt-4 border-t border-white/5">
-            <x-sidebar-item icon="message-square" label="الرسائل والإشعارات" :collapsed="!sidebarOpen" href="#" />
-            <x-sidebar-item icon="help-circle" label="مركز المساعدة" :collapsed="!sidebarOpen" href="#" />
+            <x-sidebar-item icon="message-square" label="الرسائل والإشعارات" href="#" />
+            <x-sidebar-item icon="help-circle" label="مركز المساعدة" href="#" />
         </div>
     </nav>
 

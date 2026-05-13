@@ -20,28 +20,28 @@
         <!-- Overview -->
         <div class="mb-4">
             <p x-show="sidebarOpen" class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold px-4 mb-2">القائمة</p>
-            <x-sidebar-item icon="layout-dashboard" label="لوحة التحكم" active="{{ request()->routeIs('student.dashboard') }}" :collapsed="!sidebarOpen" href="{{ route('student.dashboard') }}" />
-            <x-sidebar-item icon="book-open" label="كورساتي" active="{{ request()->routeIs('student.courses') }}" :collapsed="!sidebarOpen" href="{{ route('student.courses') }}" />
+            <x-sidebar-item icon="layout-dashboard" label="لوحة التحكم" active="{{ request()->routeIs('student.dashboard') }}" href="{{ route('student.dashboard') }}" />
+            <x-sidebar-item icon="book-open" label="كورساتي" active="{{ request()->routeIs('student.courses') }}" href="{{ route('student.courses') }}" />
         </div>
         
         <!-- Learning & Skills -->
         <div class="mb-4 pt-4 border-t border-white/5">
             <p x-show="sidebarOpen" class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold px-4 mb-2">التعلم والمهارات</p>
-            <x-sidebar-item icon="monitor-play" label="مواصلة التعلم" :collapsed="!sidebarOpen" href="{{ route('student.learning', ['id' => 1]) }}" />
-            <x-sidebar-item icon="clipboard-check" label="الاختبارات" :collapsed="!sidebarOpen" href="{{ route('student.quiz', ['id' => 1]) }}" />
+            <x-sidebar-item icon="monitor-play" label="مواصلة التعلم" href="{{ route('student.learning', ['id' => 1]) }}" />
+            <x-sidebar-item icon="clipboard-check" label="الاختبارات" href="{{ route('student.quiz', ['id' => 1]) }}" />
         </div>
         
         <!-- Achievements -->
         <div class="mb-4 pt-4 border-t border-white/5">
             <p x-show="sidebarOpen" class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold px-4 mb-2">إنجازاتي</p>
-            <x-sidebar-item icon="award" label="الشهادات" active="{{ request()->routeIs('student.certificates') }}" :collapsed="!sidebarOpen" href="{{ route('student.certificates') }}" />
-            <x-sidebar-item icon="file-spreadsheet" label="النتائج" active="{{ request()->routeIs('student.results') }}" :collapsed="!sidebarOpen" href="{{ route('student.results') }}" />
+            <x-sidebar-item icon="award" label="الشهادات" active="{{ request()->routeIs('student.certificates') }}" href="{{ route('student.certificates') }}" />
+            <x-sidebar-item icon="file-spreadsheet" label="النتائج" active="{{ request()->routeIs('student.results') }}" href="{{ route('student.results') }}" />
         </div>
 
         <!-- Account -->
         <div class="mb-4 pt-4 border-t border-white/5">
-            <x-sidebar-item icon="user-circle" label="الملف الشخصي" :collapsed="!sidebarOpen" href="#" />
-            <x-sidebar-item icon="help-circle" label="مركز المساعدة" :collapsed="!sidebarOpen" href="#" />
+            <x-sidebar-item icon="user-circle" label="الملف الشخصي" href="#" />
+            <x-sidebar-item icon="help-circle" label="مركز المساعدة" href="#" />
         </div>
     </nav>
 

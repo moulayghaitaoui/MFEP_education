@@ -70,5 +70,5 @@ php artisan serve
 ```
 
 ---
-**تصميم وتطوير**: فريق الإبداع الرقمي - Antigravity AI
+
 # MFEP_education

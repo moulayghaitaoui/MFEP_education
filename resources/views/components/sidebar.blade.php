@@ -20,32 +20,32 @@
         <!-- Overview -->
         <div class="mb-4">
             <p x-show="sidebarOpen" class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold px-4 mb-2">الرئيسية</p>
-            <x-sidebar-item icon="monitor" label="مركز التحكم" active="{{ request()->routeIs('admin.dashboard') }}" :collapsed="!sidebarOpen" href="{{ route('admin.dashboard') }}" />
-            <x-sidebar-item icon="activity" label="مراقبة النظام" :collapsed="!sidebarOpen" />
+            <x-sidebar-item icon="monitor" label="مركز التحكم" active="{{ request()->routeIs('admin.dashboard') }}" href="{{ route('admin.dashboard') }}" />
+            <x-sidebar-item icon="activity" label="مراقبة النظام" />
         </div>
         
         <!-- Management -->
         <div class="mb-4 pt-4 border-t border-white/5">
             <p x-show="sidebarOpen" class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold px-4 mb-2">إدارة الموارد</p>
-            <x-sidebar-item icon="map" label="إدارة المديريات" :collapsed="!sidebarOpen" />
-            <x-sidebar-item icon="landmark" label="إدارة المعاهد" :collapsed="!sidebarOpen" />
-            <x-sidebar-item icon="users" label="إدارة المستخدمين" :collapsed="!sidebarOpen" />
-            <x-sidebar-item icon="book-marked" label="إدارة التخصصات" :collapsed="!sidebarOpen" />
+            <x-sidebar-item icon="map" label="إدارة المديريات" />
+            <x-sidebar-item icon="landmark" label="إدارة المعاهد" />
+            <x-sidebar-item icon="users" label="إدارة المستخدمين" />
+            <x-sidebar-item icon="book-marked" label="إدارة التخصصات" />
         </div>
         
         <!-- Reports -->
         <div class="mb-4 pt-4 border-t border-white/5">
             <p x-show="sidebarOpen" class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold px-4 mb-2">البيانات</p>
-            <x-sidebar-item icon="bar-chart-big" label="التقارير الوطنية" active="{{ request()->routeIs('admin.reports') }}" :collapsed="!sidebarOpen" href="{{ route('admin.reports') }}" />
-            <x-sidebar-item icon="pie-chart" label="الإحصائيات العامة" :collapsed="!sidebarOpen" />
+            <x-sidebar-item icon="bar-chart-big" label="التقارير الوطنية" active="{{ request()->routeIs('admin.reports') }}" href="{{ route('admin.reports') }}" />
+            <x-sidebar-item icon="pie-chart" label="الإحصائيات العامة" />
         </div>
         
         <!-- Configuration -->
         <div class="mb-4 pt-4 border-t border-white/5">
             <p x-show="sidebarOpen" class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold px-4 mb-2">النظام</p>
-            <x-sidebar-item icon="settings-2" label="إعدادات المنصة" active="{{ request()->routeIs('admin.settings') }}" :collapsed="!sidebarOpen" href="{{ route('admin.settings') }}" />
-            <x-sidebar-item icon="key" label="الأمان والتراخيص" :collapsed="!sidebarOpen" />
-            <x-sidebar-item icon="terminal" label="سجلات النظام" :collapsed="!sidebarOpen" />
+            <x-sidebar-item icon="settings-2" label="إعدادات المنصة" active="{{ request()->routeIs('admin.settings') }}" href="{{ route('admin.settings') }}" />
+            <x-sidebar-item icon="key" label="الأمان والتراخيص" />
+            <x-sidebar-item icon="terminal" label="سجلات النظام" />
         </div>
     </nav>
 

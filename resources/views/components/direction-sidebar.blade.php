@@ -22,35 +22,35 @@
         <!-- Overview -->
         <div class="mb-4">
             <p x-show="sidebarOpen" class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold px-4 mb-2">لوحة التحكم</p>
-            <x-sidebar-item icon="layout-dashboard" label="الرئيسية" active="{{ request()->routeIs('direction.dashboard') }}" :collapsed="!sidebarOpen" href="{{ route('direction.dashboard') }}" />
+            <x-sidebar-item icon="layout-dashboard" label="الرئيسية" active="{{ request()->routeIs('direction.dashboard') }}" href="{{ route('direction.dashboard') }}" />
         </div>
         
         <!-- Academic Management -->
         <div class="mb-4 pt-4 border-t border-white/5">
             <p x-show="sidebarOpen" class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold px-4 mb-2">التسيير البيداغوجي</p>
-            <x-sidebar-item icon="school" label="إدارة المعاهد" :collapsed="!sidebarOpen" href="#" />
-            <x-sidebar-item icon="users-round" label="إدارة الأفواج" active="{{ request()->routeIs('direction.groups') }}" :collapsed="!sidebarOpen" href="{{ route('direction.groups') }}" />
-            <x-sidebar-item icon="calendar-days" label="الجداول الزمنية" active="{{ request()->routeIs('direction.schedules') }}" :collapsed="!sidebarOpen" href="{{ route('direction.schedules') }}" />
+            <x-sidebar-item icon="school" label="إدارة المعاهد" href="#" />
+            <x-sidebar-item icon="users-round" label="إدارة الأفواج" active="{{ request()->routeIs('direction.groups') }}" href="{{ route('direction.groups') }}" />
+            <x-sidebar-item icon="calendar-days" label="الجداول الزمنية" active="{{ request()->routeIs('direction.schedules') }}" href="{{ route('direction.schedules') }}" />
         </div>
         
         <!-- Tracking -->
         <div class="mb-4 pt-4 border-t border-white/5">
             <p x-show="sidebarOpen" class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold px-4 mb-2">المتابعة والرقابة</p>
-            <x-sidebar-item icon="fingerprint" label="سجلات الحضور" active="{{ request()->routeIs('direction.attendance') }}" :collapsed="!sidebarOpen" href="{{ route('direction.attendance') }}" />
-            <x-sidebar-item icon="user-cog" label="متابعة الأساتذة" :collapsed="!sidebarOpen" href="#" />
-            <x-sidebar-item icon="graduation-cap" label="متابعة المتربصين" :collapsed="!sidebarOpen" href="#" />
+            <x-sidebar-item icon="fingerprint" label="سجلات الحضور" active="{{ request()->routeIs('direction.attendance') }}" href="{{ route('direction.attendance') }}" />
+            <x-sidebar-item icon="user-cog" label="متابعة الأساتذة" href="#" />
+            <x-sidebar-item icon="graduation-cap" label="متابعة المتربصين" href="#" />
         </div>
         
         <!-- Results & Reports -->
         <div class="mb-4 pt-4 border-t border-white/5">
             <p x-show="sidebarOpen" class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-extrabold px-4 mb-2">النتائج والتقارير</p>
-            <x-sidebar-item icon="clipboard-list" label="نتائج الاختبارات" active="{{ request()->routeIs('direction.exams') }}" :collapsed="!sidebarOpen" href="{{ route('direction.exams') }}" />
-            <x-sidebar-item icon="file-spreadsheet" label="التقارير والإحصائيات" active="{{ request()->routeIs('direction.reports') }}" :collapsed="!sidebarOpen" href="{{ route('direction.reports') }}" />
+            <x-sidebar-item icon="clipboard-list" label="نتائج الاختبارات" active="{{ request()->routeIs('direction.exams') }}" href="{{ route('direction.exams') }}" />
+            <x-sidebar-item icon="file-spreadsheet" label="التقارير والإحصائيات" active="{{ request()->routeIs('direction.reports') }}" href="{{ route('direction.reports') }}" />
         </div>
 
         <!-- Notifications -->
         <div class="mb-4 pt-4 border-t border-white/5">
-            <x-sidebar-item icon="bell" label="الإشعارات" :collapsed="!sidebarOpen" href="#" />
+            <x-sidebar-item icon="bell" label="الإشعارات" href="#" />
         </div>
     </nav>
 
